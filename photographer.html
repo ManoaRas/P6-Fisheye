@@ -12,13 +12,13 @@
     <script src="https://kit.fontawesome.com/c498a47d8b.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
+    <header aria-hidden="false">
       <a class="logo" href="./index.html">
         <img src="./assets/images/logo.png" alt="Fisheye Home page" />
       </a>
     </header>
 
-    <main class="main">
+    <main class="main" aria-hidden="false">
       <div class="photographer-header"></div>
       <div class="filter-wrapper">
         <!-- <label for="filter" class="input-label">Trier par</label>
@@ -28,7 +28,7 @@
           <option value="title">Titre</option>
         </select> -->
       </div>
-      <div class="medias-section"></div>
+      <div class="medias-section" tabindex="0"></div>
     </main>
 
     <div id="contact_modal">

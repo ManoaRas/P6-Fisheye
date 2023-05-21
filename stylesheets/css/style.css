@@ -461,12 +461,12 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
   max-width: 1200px;
   margin-left: 80px;
 }
-.medias-section figure {
+.medias-section figure, .medias-section video {
   position: relative;
   width: 360px;
   margin: 20px;
 }
-.medias-section figure video + figcaption:after {
+.medias-section figure video + figcaption:after, .medias-section video video + figcaption:after {
   pointer-events: none;
   content: " ";
   padding: 70px 70px;

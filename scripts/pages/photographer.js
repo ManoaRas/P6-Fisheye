@@ -11,21 +11,17 @@ class PhotographerApp {
 
   displayData(photographer, mediaList) {
     // Display data photographer
-    console.log('info :', photographer, mediaList)
+    // console.log('Photographer :', photographer)
+    // console.log('Media :', mediaList)
     const photographerHeader = document.querySelector(".photographer-header");
-    const photographerMedia = document.querySelector(".medias-section");
-
     const photographerModel = new PhotographerModel(photographer);
-
     photographerHeader.append(photographerModel.getPhotographerInfos());
 
-    // const photographerMediasModel = new MediaFactory(mediaList);
-    // photographerMedia.append(photographerMediasModel.getMediaCardDOM());
-
+    const photographerMedia = document.querySelector(".medias-section");
     mediaList.map(media => {
       const photographerMediasModel = new MediaFactory(media);
-      console.log(photographerMediasModel)
-      photographerMediasModel.getMediaCardDOM(photographerMedia);
+      // photographerMedia.append(photographerMediasModel.getMediaCardDOM());
+      photographerMedia.innerHTML += photographerMediasModel.getMediaCardDOM();
     });
   };
 
