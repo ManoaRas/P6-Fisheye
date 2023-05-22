@@ -1,4 +1,4 @@
-import { MediaModel } from "../models/media.js";
+import { MediaModel } from "./media_model.js";
 
 export class ImageModel extends MediaModel {
   constructor(data) {

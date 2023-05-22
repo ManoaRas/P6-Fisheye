@@ -1,5 +1,5 @@
-import { PhotographerApi } from "../api/photographerApi.js";
-import { PhotographerModel } from "../models/photographer.js";
+import { PhotographerApi } from "../api/photographer_api.js";
+import { PhotographerModel } from "../models/photographer_model.js";
 
 class IndexApp {
   async displayData(photographers) {
@@ -13,7 +13,8 @@ class IndexApp {
 
   async init() {
     // Get photographers Datas
-    this.displayData(await PhotographerApi.getPhotographers());
+    const photographerApi = new PhotographerApi();
+    this.displayData(await photographerApi.getPhotographers());
   };
 }
 
