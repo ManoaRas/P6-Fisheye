@@ -116,7 +116,7 @@ a {
 
 .lightbox__container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-left: 50px;
   margin-right: 50px;
@@ -279,7 +279,7 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
 }
 .photographers-index .photographer__link {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   justify-self: center;
   flex-direction: column;
@@ -455,16 +455,15 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
 
 .medias-section {
   display: grid;
-  grid-template-columns: repeat(3, 400px);
-  grid-gap: 20px;
-  padding-top: 80px;
-  max-width: 1200px;
-  margin-left: 80px;
+  grid-template-columns: repeat(3, 24.3055555556vw);
+  row-gap: 2.0833333333vw;
+  justify-content: space-between;
+  margin: 1.5972222222vw 6.9444444444vw 5.2083333333vw;
 }
-.medias-section figure, .medias-section video {
-  position: relative;
-  width: 360px;
-  margin: 20px;
+.medias-section .media {
+  border-radius: 5px;
+  width: 24.3055555556vw;
+  height: 20.8333333333vw;
 }
 .medias-section figure video + figcaption:after, .medias-section video video + figcaption:after {
   pointer-events: none;
@@ -539,15 +538,14 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
 @media screen and (max-width: 1400px) {
   .medias-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-right: 80px;
   }
   .photograph-header {
     height: auto;
     margin: auto;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
   }
   .photograph-header img {

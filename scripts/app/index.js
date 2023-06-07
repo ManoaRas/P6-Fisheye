@@ -3,7 +3,6 @@ import { PhotographerModel } from "../models/photographer_model.js";
 
 class IndexApp {
   async displayData(photographers) {
-    // Display photographers
     const photographersSection = document.querySelector(".photographers-index");
     photographers.photographers.map((photographer) => {
       const photographerModel = new PhotographerModel(photographer);
@@ -12,7 +11,6 @@ class IndexApp {
   }
 
   async init() {
-    // Get photographers Datas
     const photographerApi = new PhotographerApi();
     this.displayData(await photographerApi.getPhotographers());
   };

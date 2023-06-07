@@ -114,16 +114,18 @@
 
 .medias-section {
   display: grid;
-  grid-template-columns: repeat(3, 400px);
-  grid-gap: 20px;
-  padding-top: 80px;
-  max-width: 1200px;
-  margin-left: 80px;
+  grid-template-columns: repeat(3, 24.3055555556vw);
+  row-gap: 2.0833333333vw;
+  justify-content: space-between;
+  margin: 1.5972222222vw 6.9444444444vw 5.2083333333vw;
+
+  .media {
+    border-radius: 5px;
+    width: 24.3055555556vw;
+    height: 20.8333333333vw;
+  }
 
   figure, video {
-    position: relative;
-    width: 360px;
-    margin: 20px;
     video + figcaption:after{
       pointer-events:none;
       content: " ";
@@ -199,12 +201,11 @@
   .medias-section {
   @include itemCenter;
   flex-wrap: wrap;
-  margin-right: 80px;
   }
   .photograph-header {
     height: auto;
     margin: auto;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
     img {
       margin: 40px;

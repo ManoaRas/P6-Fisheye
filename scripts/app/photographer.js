@@ -10,9 +10,6 @@ class PhotographerApp {
   }
 
   displayData(photographer, mediaList) {
-    // Display data photographer
-    // console.log('Photographer :', photographer)
-    // console.log('Media :', mediaList)
     const photographerHeader = document.querySelector(".photographer-header");
     const photographerModel = new PhotographerModel(photographer);
     photographerHeader.append(photographerModel.getPhotographerInfos());
@@ -20,8 +17,7 @@ class PhotographerApp {
     const photographerMedia = document.querySelector(".medias-section");
     mediaList.map(media => {
       const photographerMediasModel = new MediaFactory(media);
-      // photographerMedia.append(photographerMediasModel.getMediaCardDOM());
-      photographerMedia.innerHTML += photographerMediasModel.getMediaCardDOM();
+      photographerMedia.append(photographerMediasModel.getMediaCardDOM());
     });
   };
 
