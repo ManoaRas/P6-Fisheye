@@ -141,7 +141,7 @@ a {
     top: 10px;
   }
 }
-#contact_modal {
+.contact-modal {
   display: none;
   position: fixed;
   top: 0;

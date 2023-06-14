@@ -91,10 +91,10 @@ export class PhotographerModel {
 
   _createContactButton() {
     const buttonElement = document.createElement("div");
+    buttonElement.classList.add('contact-me');
     const userButton = document.createElement("button");
     userButton.setAttribute("class", "button");
     userButton.setAttribute("arial-label", "Contact me");
-    userButton.setAttribute("onclick", "displayModal()");
     userButton.textContent = "Contactez-moi";
     buttonElement.append(userButton);
     return buttonElement;
