@@ -1,7 +1,8 @@
-import { MediaApi } from '../api/mediaApi.js';
-import { PhotographerApi } from '../api/photographerApi.js';
-import { MediaFactory } from "../factories/mediaFactory.js";
-import { PhotographerModel } from "../models/photographerModel.js";
+import { MediaApi } from '../api/media.js';
+import { PhotographerApi } from '../api/photographer.js';
+import { MediaFactory } from "../factories/media.js";
+import { PhotographerModel } from "../models/photographer.js";
+import { ContactFormUtil } from "../utils/contactForm.js";
 
 class PhotographerApp {
   constructor() {
@@ -23,6 +24,11 @@ class PhotographerApp {
     });
   };
 
+  contactFormData() {
+    const contactFormUtil = new ContactFormUtil();
+    contactFormUtil.contactFormData()
+  }
+
   async init() {
     // init api
     const photographerApi = new PhotographerApi();
@@ -32,6 +38,7 @@ class PhotographerApp {
     const media = await mediaApi.getMediaByPhotographerId(this.id);
     const photographer = await photographerApi.getPhotographerById(this.id);
     this.displayData(photographer, media);
+    this.contactFormData()
   }
 }
 

@@ -1,48 +1,49 @@
-export class contactForm {
+import { HandleContactFormUtil } from '../utils/handleContactForm.js';
+import { ContactFormView } from "../views/contactForm.js";
+
+export class ContactFormUtil {
   constructor() {
-    this.modal = document.getElementById("contact_modal");
+    this.handleContactFormUtil = new HandleContactFormUtil();
+    this.modalView = new ContactFormView();
+    this.bodyPage = document.querySelector("body");
+    this.photographerModal = document.querySelector(".contact");
+    this.contactFormButtonElement = document.querySelector('.contact-me .button');
+
   }
 
-  displayModal() {
-    const contactMeText = document.getElementById("modal_title");
-    const firstNameInput = document.getElementById("first-name");
-    const btn = document.querySelector(".send_form");
-    const closeBtn = document.querySelector(".close_form");
-    const photographerName = document.querySelector(".photographer__link--name").innerText;
+  #openModal(open, body) {
+    open.style.display = "block";
+    open.classList.add('active');
+    body.style.overflow = "hidden";
+  }
 
-    this.modal.setAttribute("aria-label", "Contact me " + photographerName);
-    contactMeText.textContent = `Contactez-moi <br/> ${ photographerName }`;
-    this.modal.style.display = "block";
+  #closeModal(close, body) {
+    close.style.display = "none";
+    close.classList.remove('active');
+    body.style.overflow = "auto";
+  }
 
-    // When the contact modal opens, we set the focus on the first form field
-    firstNameInput.focus();
+  contactFormData() {
+    this.photographerModal.append(this.modalView.contactFormDOM());
 
-    // On click on the 'send' button, the user's inputs are logged in the console
-    if (btn) {
-      btn.addEventListener("click", function(e) {
-        e.preventDefault();
-        const firstName = document.getElementById("first-name").value;
-        const lastName = document.getElementById("last-name").value;
-        const email = document.getElementById("email").value;
-        const message = document.getElementById("message").value;
-        setTimeout(function() {
-          console.log("Prénom : ", firstName);
-          console.log("Nom : ", lastName);
-          console.log("Email : ", email);
-          console.log("Message : ", message);
-        }, 2000);
-      });
-    }
-    // Close the contact modal, for keyboard navigation
-    document.addEventListener('keypress', function(e) {
-      if (closeBtn === document.activeElement && e.key === 'Enter') {
-        this.modal.style.display = "none";
+    // Modal fermeture
+    const closeBtn = document.querySelector('.contact__header--close');
+    closeBtn.addEventListener('click', () => {
+      this.#closeModal(this.photographerModal, this.bodyPage);
+    });
+
+    this.photographerModal.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (this.handleContactFormUtil._handleSubmit(event)) {
+        this.#closeModal(this.photographerModal, this.bodyPage);
       }
     });
-  }
 
-  // Close the contact modal on click on the cross icon
-  closeModal() {
-    this.modal.style.display = "none";
+    // Modal ouverture
+    if (this.contactFormButtonElement) {
+      this.contactFormButtonElement.addEventListener('click', () => {
+        this.#openModal(this.photographerModal, this.bodyPage);
+      });
+    }
   }
 }

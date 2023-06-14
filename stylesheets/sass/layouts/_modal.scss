@@ -1,125 +1,172 @@
-.contact-modal {
+// form {
+//   display: flex;
+//   width: 100%;
+//   flex-direction: column;
+//   align-items: flex-start;
+
+//   label {
+//     color: $label-dark;
+//     font-size: 28px;
+//   }
+//   div {
+//     display: flex;
+//     flex-direction: column;
+//     width: 100%;
+//     align-items: self-start;
+//     margin-bottom: 26px;
+//   }
+//   input {
+//     @include form-input;
+//     height: 60px;
+//   }
+//   textarea {
+//     @include form-input;
+//     height: 150px;
+//     resize:none;
+//   }
+//   input:focus, textarea:focus, button:focus {
+//     outline: 2px solid $primary-dark;
+//   }
+//   .formData[data-error]::after {
+//     content: attr(data-error);
+//     font-size: 15px;
+//     font-weight: 700;
+//     color: $inputData;
+//     display: block;
+//     margin-top: 10px;
+//     margin-bottom: 0px;
+//     text-align: left;
+//     line-height: 0.3;
+//   }
+//   .formData[data-error-visible="true"] {
+//     input, textarea{
+//       border: 2px solid $b-inputData;
+//       background: $bg-inputData;
+//     }
+//   }
+// }
+
+// @media only screen and (max-width: $small){
+//   .modal {
+//     width: 80%;
+//   }
+//   #modalTitle {
+//     font-size: 30px;
+//   }
+//   .formData label {
+//     font-size: 20px;
+//   }
+// }
+
+.contact {
   display: none;
+  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 15;
   width: 100%;
   height: 100%;
-  background: $bg-modal;
-  overflow: auto;
-  transition: opacity .3s;
-  z-index: 2;
-}
+  background-color: $bg-modal;
 
-.fade-out {
-  opacity: 0;
-}
-
-.modal {
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  transform: translate(-50%);
-
-  border-radius: 5px;
-  background-color: $bg-modal-color;
-  width: 550px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-
-
-  header {
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 50px;
-    img {
-      cursor: pointer;
-      margin-top: 0px;
-    }
-    h2 {
-      font-size: 50px;
-      font-weight: normal;
-      line-height: 1.2;
-    }
-  }
-}
-
-.close_form {
-  margin-top: -50px;
-  height: 40px;
-  width: 40px;
-  background: transparent;
-  border: none;
-  padding: 0;
-  transition: .4s ease-in-out;
-  &:focus-visible{
-    outline: none;
-    transform: rotate(180deg);
-    opacity: 0.6;
-    transition: .4s ease-in-out;
-  }
-}
-
-form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-
-  label {
-    color: $label-dark;
-    font-size: 28px;
-  }
-  div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-  }
-  input {
-    @include form-input;
-    height: 60px;
-  }
-  textarea {
-    @include form-input;
-    height: 150px;
-    resize:none;
-  }
-  input:focus, textarea:focus, button:focus {
-    outline: 2px solid $primary-dark;
-  }
-  .formData[data-error]::after {
-    content: attr(data-error);
-    font-size: 15px;
-    font-weight: 700;
-    color: $inputData;
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 0px;
-    text-align: left;
-    line-height: 0.3;
-  }
-  .formData[data-error-visible="true"] {
-    input, textarea{
-      border: 2px solid $b-inputData;
-      background: $bg-inputData;
-    }
-  }
-}
-
-@media only screen and (max-width: $small){
   .modal {
-    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%);
+    margin: auto;
+    padding: 35px;
+    border-radius: 5px;
+    width: 75%;
+    // max-width: 669px;
+    background-color: $bg-modal-color;
+    mix-blend-mode: normal;
+    filter: drop-shadow(-5px 10px 30px rgba(0, 0, 0, 0.25));
   }
-  #modalTitle {
-    font-size: 30px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 19px;
+    width: 100%;
+    height: 100%;
+
+    &--title {
+      font-size: 64px;
+      font-weight: normal;
+      line-height: 83px;
+    }
+
+    &--close {
+      display: flex;
+      position: relative;
+      z-index: 100;
+      padding: 0;
+      border: none;
+      background: transparent;
+      transition: .4s ease-in-out;
+      cursor: pointer;
+
+      &:focus-visible{
+        outline: none;
+        transform: rotate(180deg);
+        opacity: 0.6;
+        transition: .4s ease-in-out;
+      }
+
+      .close-icon{
+        width: 2.9166666667vw;
+        height: 2.9166666667vw;
+      }
+    }
   }
-  .formData label {
-    font-size: 20px;
+
+  &__body {
+    width: 100%;
+    .form {
+      .formData {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          color: $label-dark;
+          font-size: 36px;
+          line-height: 47px;
+        }
+
+        #firstname, #lastname, #email {
+          height: 68px;
+        }
+
+        &--input {
+          border: 3px solid rgba(0,0,0,0);
+          border-radius: 5px;
+          outline: none;
+          padding: 8px 20px;
+          width: 100%;
+          font-family: inherit;
+          font-size: 24px;
+          line-height: 31px;
+        }
+      }
+      .formData[data-error]::after {
+        color: #e54858;
+        font-size: get-vw($small, 24px);
+        content: attr(data-error);
+        text-align: left;
+        line-height: get-vw($small, 46.87px);
+        transition: 0.3s;
+      }
+    }
+    &--button {
+      padding: 23px 50px;
+      font-size: 18px;
+      line-height: 23px;
+    }
   }
 }
