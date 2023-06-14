@@ -1,6 +1,6 @@
-import { ImageModel } from "../models/imageModel.js";
-import { VideoModel } from "../models/videoModel.js";
-import { MediaView } from "../views/mediaView.js";
+import { ImageModel } from "../models/image.js";
+import { VideoModel } from "../models/video.js";
+import { MediaView } from "../views/media.js";
 
 export class MediaFactory {
   constructor(data) {

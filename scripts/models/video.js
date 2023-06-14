@@ -1,4 +1,4 @@
-import { MediaModel } from "./mediaModel.js";
+import { MediaModel } from "./media.js";
 
 export class VideoModel extends MediaModel {
   constructor(data) {

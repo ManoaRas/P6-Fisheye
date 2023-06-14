@@ -1,7 +1,11 @@
-import { MediaApi } from '../api/mediaApi.js';
-import { PhotographerApi } from '../api/photographerApi.js';
-import { MediaFactory } from "../factories/mediaFactory.js";
-import { PhotographerModel } from "../models/photographerModel.js";
+import { MediaApi } from '../api/media.js';
+import { PhotographerApi } from '../api/photographer.js';
+import { MediaFactory } from "../factories/media.js";
+import { PhotographerModel } from "../models/photographer.js";
+
+import { Subject } from '../subjects/subject.js';
+import { ModalSubject } from '../subjects/modal.js';
+import { ContactFormObserver } from '../observers/contactForm.js';
 
 class PhotographerApp {
   constructor() {
@@ -32,6 +36,16 @@ class PhotographerApp {
     const media = await mediaApi.getMediaByPhotographerId(this.id);
     const photographer = await photographerApi.getPhotographerById(this.id);
     this.displayData(photographer, media);
+
+    const subject = new Subject();
+    const modalSubject = new ModalSubject();
+
+    const contactFormObserver = new ContactFormObserver(modalSubject);
+
+    console.log(subject)
+    subject.attach(contactFormObserver);
+
+    subject.dispatch();
   }
 }
 
