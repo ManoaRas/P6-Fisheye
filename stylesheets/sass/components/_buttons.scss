@@ -17,3 +17,10 @@
     transition: background ease .2s;
   }
 }
+
+.sortby__list {
+  display: none;
+}
+.sortby__list.open {
+  display: block !important;
+}

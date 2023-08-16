@@ -1,6 +1,5 @@
 export class ContactFormView {
-  constructor(data) {
-    this.data = data;
+  constructor() {
     this.name = document.querySelector(".photographer__link--name").innerText;
   }
 
@@ -44,11 +43,15 @@ export class ContactFormView {
     inputFirstName.setAttribute("type", "text");
     inputFirstName.setAttribute("aria-label", "First name");
 
+    // Error Firstname
+    const errorFirstName = document.createElement("p");
+    errorFirstName.classList.add("errorData");
+
     // Div formData
     const div = document.createElement("div");
     div.classList.add("formData");
 
-    div.append(labelFirstName, inputFirstName);
+    div.append(labelFirstName, inputFirstName, errorFirstName);
     return div;
   }
 
@@ -66,11 +69,15 @@ export class ContactFormView {
     inputLastName.setAttribute("type", "text");
     inputLastName.setAttribute("aria-label", "Last name");
 
+    // Error Lastname
+    const errorLastName = document.createElement("p");
+    errorLastName.classList.add("errorData");
+
     // Div formData
     const div = document.createElement("div");
     div.classList.add("formData");
 
-    div.append(labelLastName, inputLastName);
+    div.append(labelLastName, inputLastName, errorLastName);
     return div;
   }
 
@@ -88,11 +95,15 @@ export class ContactFormView {
     inputEmail.setAttribute("type", "text");
     inputEmail.setAttribute("aria-label", "Email");
 
+    // Error Email
+    const errorEmail = document.createElement("p");
+    errorEmail.classList.add("errorData");
+
     // Div formData
     const div = document.createElement("div");
     div.classList.add("formData");
 
-    div.append(labelEmail, inputEmail);
+    div.append(labelEmail, inputEmail, errorEmail);
     return div;
   }
 
@@ -109,11 +120,15 @@ export class ContactFormView {
     textareaMessage.setAttribute("name", "message");
     textareaMessage.setAttribute("aria-label", "Your message");
 
+    // Error Message
+    const errorMessage = document.createElement("p");
+    errorMessage.classList.add("errorData");
+
     // Div formData
     const div = document.createElement("div");
     div.classList.add("formData");
 
-    div.append(labelMessage, textareaMessage);
+    div.append(labelMessage, textareaMessage, errorMessage);
     return div;
   }
 

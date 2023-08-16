@@ -56,6 +56,14 @@ a {
   transition: background ease 0.2s;
 }
 
+.sortby__list {
+  display: none;
+}
+
+.sortby__list.open {
+  display: block !important;
+}
+
 .lightbox {
   position: fixed;
   top: 0;
