@@ -3,6 +3,7 @@ import { PhotographerApi } from '../api/photographer.js';
 import { MediaFactory } from "../factories/media.js";
 import { PhotographerModel } from "../models/photographer.js";
 import { ContactFormUtil } from "../utils/contactForm.js";
+import { LikesUtils } from '../utils/likes.js';
 import { SortByUtil } from "../utils/sortBy.js";
 
 class PhotographerApp {
@@ -11,31 +12,48 @@ class PhotographerApp {
     this.id = this.currentUrl.get("id");
   }
 
-  displayData(photographer, mediaList) {
+  _photographerHeaders(photographer) {
     // Header photographer info
     const photographerHeader = document.querySelector(".photographer-header");
     const photographerModel = new PhotographerModel(photographer);
     photographerHeader.append(photographerModel.getPhotographerInfos());
+  }
 
+  _photographerMedias(mediaList) {
     // Media photographer info
     const photographerMedia = document.querySelector(".medias-section");
     mediaList.map(media => {
       const photographerMediasModel = new MediaFactory(media);
       photographerMedia.append(photographerMediasModel.mediaCardDOM());
     });
+  }
 
+  _photographerSortBy(mediaList) {
     const sortby = new SortByUtil(mediaList);
     sortby.sortByData();
-  };
+  }
 
-  contactFormData() {
+  _contactFormData() {
     const contactFormUtil = new ContactFormUtil();
     contactFormUtil.contactFormData();
   }
 
-  // lightboxData() {}
+  _likesData(photographer) {
+    const likeUtils = new LikesUtils(photographer);
+    likeUtils.init();
+  }
 
-  // likeData() {}
+  // _lightboxData() {}
+
+
+  displayData(photographer, mediaList) {
+    this._photographerHeaders(photographer);
+    this._photographerMedias(mediaList);
+    this._photographerSortBy(mediaList);
+    this._contactFormData();
+    this._likesData(photographer);
+    // this._lightboxData();
+  };
 
   async init() {
     // init api
@@ -48,7 +66,6 @@ class PhotographerApp {
 
     if (media || photographer) {
       this.displayData(photographer, media);
-      this.contactFormData();
     } else {
       console.error("No media found for the photographer.");
     }
