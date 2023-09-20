@@ -34,6 +34,7 @@ export class MediaView {
 
   _createArticle(id, likes, date, title) {
     const article = document.createElement("article");
+    article.classList.add("media_card");
     article.setAttribute("data-id", id);
     article.setAttribute("data-user-like", "false");
     article.setAttribute("data-likes", likes);

@@ -3,6 +3,7 @@ import { PhotographerApi } from '../api/photographer.js';
 import { MediaFactory } from "../factories/media.js";
 import { PhotographerModel } from "../models/photographer.js";
 import { ContactFormUtil } from "../utils/contactForm.js";
+import { LightBoxUtils } from '../utils/lightBox.js';
 import { LikesUtils } from '../utils/likes.js';
 import { SortByUtil } from "../utils/sortBy.js";
 
@@ -43,7 +44,10 @@ class PhotographerApp {
     likeUtils.init();
   }
 
-  // _lightboxData() {}
+  _lightboxData(photographer, mediaList) {
+    const lightBoxUtils = new LightBoxUtils(photographer, mediaList);
+    lightBoxUtils.init();
+  }
 
 
   displayData(photographer, mediaList) {
@@ -52,7 +56,7 @@ class PhotographerApp {
     this._photographerSortBy(mediaList);
     this._contactFormData();
     this._likesData(photographer);
-    // this._lightboxData();
+    this._lightboxData(photographer, mediaList);
   };
 
   async init() {

@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/c498a47d8b.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header aria-hidden="false">
+    <header id="header" aria-hidden="false">
       <a class="logo" href="./index.html">
         <img src="./assets/images/logo.png" alt="Fisheye Home page" />
       </a>
@@ -25,6 +25,17 @@
       <div class="likes" aria-hidden="false" tabindex="0"></div>
     </main>
 
+    <!-- Contact Form -->
     <div class="contact" aria-hidden="true"></div>
+
+    <!-- Lightbox -->
+    <div class="lightbox_wrapper wrapper" aria-modal="true" role="dialog" style="display: none">
+      <div class="lightbox" aria-label="Media closeup view">
+          <button class="btn_close_lightbox btn_close" aria-label="Close dialog"></button>
+          <button class="btn_previous" aria-label="Previous media"></button>
+          <button class="btn_next" aria-label="Next media"></button>
+          <figure class="lightbox_media" role="media" aria-label="Current Media"></figure>
+      </div>
+    </div>
   </body>
 </html>
