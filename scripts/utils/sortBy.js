@@ -1,5 +1,6 @@
 import { SortByViews } from '../views/sortBy.js';
 import { MediaFactory } from '../factories/media.js';
+import { LightBoxUtils } from '../utils/lightBox.js';
 
 export class SortByUtil {
   constructor(data) {
@@ -51,6 +52,10 @@ export class SortByUtil {
       const photographerMediasModel = new MediaFactory(media);
       mediasSection.append(photographerMediasModel.mediaCardDOM());
     });
+
+    // Relancer la lightbox après le nouveau tri
+    const lightBoxUtils = new LightBoxUtils(this.data);
+    lightBoxUtils.init();
   }
 
   sortByData() {

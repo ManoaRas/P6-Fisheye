@@ -1,7 +1,6 @@
 export class LightBoxUtils {
-  constructor(photographer, medias) {
+  constructor(medias) {
     // Data
-    this.photographer = photographer;
     this.medias = medias;
 
     // Document selector
@@ -20,12 +19,13 @@ export class LightBoxUtils {
 
   _lightBoxTemplate() {
     const currentMedia = this.medias[this.currentIndex];
-    if (currentMedia.image) {
+    console.log(this.medias)
+    console.log(this.currentIndex)
+    if (currentMedia.hasOwnProperty('image')) {
       this.lightBoxMedia.innerHTML += `
         <img src="./assets/medias/${currentMedia.image}" alt="${currentMedia.title}" style="height: 50vh">
       `;
-    }
-    if (currentMedia.video) {
+    } else {
       this.lightBoxMedia.innerHTML += `
         <video controls aria-label="${currentMedia.title}"><source src="./assets/medias/${currentMedia.video}" type="video/mp4" style="height: 50vh"></video>
       `;
@@ -77,19 +77,18 @@ export class LightBoxUtils {
 
   init() {
     this.mediaProvider.forEach((media) => {
-      media.addEventListener('click', (event) => {
-        const mediaId = event.target.alt;
-        const mediaIndex = this.medias.findIndex((media) => media.title == mediaId);
+      media.addEventListener('click', () => {
+        const mediaId = media.parentNode.dataset.id;
+        const mediaIndex = this.medias.findIndex((media) => media.id == mediaId);
         this.currentIndex = mediaIndex;
-        console.log(mediaIndex)
         this.lightBoxWrapper.style.display = 'flex';
         this.btnClose.focus();
         this._lightBoxTemplate(this.currentIndex);
-        this.btnPrevious.addEventListener('click', () => this._previousMedia());
-        this.btnNext.addEventListener('click', () => this._nextMedia());
-        this.btnClose.addEventListener('click', () => this._closeLightbox());
-        this.#shortCut();
       });
     });
+    this.btnPrevious.addEventListener('click', () => this._previousMedia());
+    this.btnNext.addEventListener('click', () => this._nextMedia());
+    this.btnClose.addEventListener('click', () => this._closeLightbox());
+    this.#shortCut();
   }
 };

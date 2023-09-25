@@ -3,6 +3,7 @@ import { MediaModel } from "./media.js";
 export class VideoModel extends MediaModel {
   constructor(data) {
     super(data);
+    this._alt = data.title;
     this._video = data.video;
   }
 
@@ -12,6 +13,7 @@ export class VideoModel extends MediaModel {
     const video = document.createElement("video");
     video.classList.add("media");
     video.setAttribute("tabindex", "-1");
+    video.setAttribute("aria-label", `${this._alt}`);
 
     const source = document.createElement("source");
     source.setAttribute("src", `${this.path + this._video}`);

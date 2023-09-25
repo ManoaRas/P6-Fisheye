@@ -44,8 +44,8 @@ class PhotographerApp {
     likeUtils.init();
   }
 
-  _lightboxData(photographer, mediaList) {
-    const lightBoxUtils = new LightBoxUtils(photographer, mediaList);
+  _lightboxData(mediaList) {
+    const lightBoxUtils = new LightBoxUtils(mediaList);
     lightBoxUtils.init();
   }
 
@@ -56,7 +56,7 @@ class PhotographerApp {
     this._photographerSortBy(mediaList);
     this._contactFormData();
     this._likesData(photographer);
-    this._lightboxData(photographer, mediaList);
+    this._lightboxData(mediaList);
   };
 
   async init() {
