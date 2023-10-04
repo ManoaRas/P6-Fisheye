@@ -13,7 +13,7 @@ class IndexApp {
   async init() {
     const photographerApi = new PhotographerApi();
     this.displayData(await photographerApi.getPhotographers());
-  };
+  }
 }
 
 new IndexApp().init();

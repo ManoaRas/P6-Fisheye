@@ -4,5 +4,10 @@
   },
   "dependencies": {
     "sass": "^1.59.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   }
 }

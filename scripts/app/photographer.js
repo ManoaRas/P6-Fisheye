@@ -57,7 +57,7 @@ class PhotographerApp {
     this._contactFormData();
     this._likesData(photographer);
     this._lightboxData(mediaList);
-  };
+  }
 
   async init() {
     // init api

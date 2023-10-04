@@ -21,7 +21,7 @@ export class LightBoxUtils {
     const currentMedia = this.medias[this.currentIndex];
     console.log(this.medias)
     console.log(this.currentIndex)
-    if (currentMedia.hasOwnProperty('image')) {
+    if (Object.prototype.hasOwnProperty.call(currentMedia, 'image')) {
       this.lightBoxMedia.innerHTML = `
         <img class="lightbox__media--source" src="./assets/medias/${currentMedia.image}" alt="${currentMedia.title}">
       `;
@@ -33,31 +33,31 @@ export class LightBoxUtils {
     this.lightBoxMedia.innerHTML += `
       <figcaption>${currentMedia.title}</figcaption>
     `;
-  };
+  }
 
   _closeLightbox() {
     this.lightBoxWrapper.style.display = 'none';
     this.lightBoxMedia.innerHTML = '';
-  };
+  }
 
   _nextMedia() {
     this.currentIndex++;
     if (this.currentIndex > this.medias.length - 1) this.currentIndex = 0;
     this._lightBoxTemplate();
     this._showActiveBtn(this.btnNext);
-  };
+  }
 
   _previousMedia() {
     this.currentIndex--;
     if (this.currentIndex < 0) this.currentIndex = this.medias.length - 1;
     this._lightBoxTemplate();
     this._showActiveBtn(this.btnPrevious);
-  };
+  }
 
   _showActiveBtn(btn) {
     btn.classList.add('active');
     setTimeout(() => btn.classList.remove('active'), 100);
-  };
+  }
 
   #shortCut() {
     this.lightBox.addEventListener('keyup', (e) => {
@@ -71,7 +71,7 @@ export class LightBoxUtils {
         case 'ArrowRight':
           this._nextMedia();
           break;
-      };
+      }
     });
   }
 
@@ -91,4 +91,4 @@ export class LightBoxUtils {
     this.btnClose.addEventListener('click', () => this._closeLightbox());
     this.#shortCut();
   }
-};
+}
