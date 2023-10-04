@@ -9,7 +9,7 @@ export class Api {
       if (!response.ok) throw new Error(await response.status);
       return response.json();
     } catch(apiError) {
-      throw new Error ('Failed to retrieve ressources', apiError);
+      throw new Error (`Failed to retrieve resources: ${apiError.message}`);
     }
   }
 }
