@@ -57,6 +57,32 @@
   }
 }
 
+@media screen and (max-width: $small) {
+  .photographer-header {
+    .photographers {
+      flex-direction: column;
+      justify-content: center;
+      .photographer {
+        align-items: center;
+        &__link {
+          &--photo {
+            height: 100px;
+            width: 100px;
+          }
+        }
+      }
+      .contact-me {
+        .button {
+          width: 100%;
+          font-size: 14px;
+          margin: 15px 0;
+          height: 40px;
+        }
+      }
+    }
+  }
+}
+
 // sort by list
 .sort {
   margin: 20px 0;
@@ -203,6 +229,12 @@ li {
   font-weight: bold;
   font-size: 22px;
   background-color: $bg-modal-color;
+}
+@media screen and (max-width: $small) {
+  .likes {
+    font-size: 16px;
+    padding: 15px;
+  }
 }
 
 @media screen and (max-width: $medium){

@@ -484,6 +484,25 @@ a {
   color: #525252;
 }
 
+@media screen and (max-width: 950px) {
+  .photographer-header .photographers {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .photographer-header .photographers .photographer {
+    align-items: center;
+  }
+  .photographer-header .photographers .photographer__link--photo {
+    height: 100px;
+    width: 100px;
+  }
+  .photographer-header .photographers .contact-me .button {
+    width: 100%;
+    font-size: 14px;
+    margin: 15px 0;
+    height: 40px;
+  }
+}
 .sort {
   margin: 20px 0;
   display: flex;
@@ -629,6 +648,12 @@ li {
   background-color: #DB8876;
 }
 
+@media screen and (max-width: 950px) {
+  .likes {
+    font-size: 16px;
+    padding: 15px;
+  }
+}
 @media screen and (max-width: 1400px) {
   .photograph-header {
     height: auto;
