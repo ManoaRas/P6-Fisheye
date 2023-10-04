@@ -79,19 +79,23 @@ export class SortByViews {
   _getButtonList() {
     const button = this._getButton();
     const list = this._getList();
-    const div = document.createElement("div");
-    div.classList.add("sortby");
 
-    div.append(button, list);
-    return div;
+    const dropdown = document.createElement("div");
+    dropdown.classList.add("dropdown");
+    dropdown.append(button, list);
+
+    const sortby = document.createElement("div");
+    sortby.classList.add("sortby");
+    sortby.appendChild(dropdown);
+    return sortby;
   }
 
   sortByDOM() {
     const title = this._getLabel();
     const buttonList = this._getButtonList();
-    const sortby = document.querySelector(".sort");
+    const sort = document.querySelector(".sort");
 
-    sortby.append(title, buttonList);
-    return sortby;
+    sort.append(title, buttonList);
+    return sort;
   }
 }

@@ -21,11 +21,6 @@ header {
   height: 90px;
 }
 
-h1 {
-  color: #901C1C;
-  margin-right: 100px;
-}
-
 a {
   text-decoration: none;
 }
@@ -37,6 +32,11 @@ a {
   height: 50px;
 }
 
+@media screen and (max-width: 950px) {
+  .main {
+    margin-bottom: 80px;
+  }
+}
 .button {
   font-size: 20px;
   font-weight: bold;
@@ -54,6 +54,14 @@ a {
   background: #D3573C;
   outline: none;
   transition: background ease 0.2s;
+}
+
+.sortby__list {
+  display: none;
+}
+
+.sortby__list.open {
+  display: block !important;
 }
 
 .lightbox {
@@ -141,152 +149,132 @@ a {
     top: 10px;
   }
 }
-#contact_modal {
+.contact {
   display: none;
+  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 15;
   width: 100%;
   height: 100%;
-  background: rgba(100, 100, 100, 0.8);
-  overflow: auto;
-  transition: opacity 0.3s;
-  z-index: 2;
+  background-color: rgba(100, 100, 100, 0.8);
 }
-
-.fade-out {
-  opacity: 0;
-}
-
-.modal {
+.contact .modal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
   position: absolute;
   top: 100px;
   left: 50%;
   transform: translate(-50%);
-  border-radius: 5px;
-  background-color: #DB8876;
-  width: 550px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 35px;
   margin: auto;
+  padding: 35px;
+  border-radius: 5px;
+  width: 75%;
+  background-color: #DB8876;
+  mix-blend-mode: normal;
+  filter: drop-shadow(-5px 10px 30px rgba(0, 0, 0, 0.25));
 }
-.modal header {
+.contact__header {
+  display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 19px;
   width: 100%;
-  margin-top: 20px;
-  margin-bottom: 50px;
+  height: 100%;
 }
-.modal header img {
-  cursor: pointer;
-  margin-top: 0px;
-}
-.modal header h2 {
-  font-size: 50px;
+.contact__header--title {
+  font-size: 64px;
   font-weight: normal;
-  line-height: 1.2;
+  line-height: 83px;
 }
-
-.close_form {
-  margin-top: -50px;
-  height: 40px;
-  width: 40px;
-  background: transparent;
-  border: none;
+.contact__header--close {
+  display: flex;
+  position: relative;
+  z-index: 100;
   padding: 0;
+  border: none;
+  background: transparent;
   transition: 0.4s ease-in-out;
+  cursor: pointer;
 }
-.close_form:focus-visible {
+.contact__header--close:focus-visible {
   outline: none;
   transform: rotate(180deg);
   opacity: 0.6;
   transition: 0.4s ease-in-out;
 }
-
-form {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
+.contact__header--close .close-icon {
+  width: 2.9166666667vw;
+  height: 2.9166666667vw;
 }
-form label {
+.contact__body {
+  width: 100%;
+}
+.contact__body .form .formData {
+  display: flex;
+  flex-direction: column;
+}
+.contact__body .form .formData label {
   color: #312E2E;
-  font-size: 28px;
+  font-size: 36px;
+  line-height: 47px;
 }
-form div {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: self-start;
-  margin-bottom: 26px;
+.contact__body .form .formData #firstname, .contact__body .form .formData #lastname, .contact__body .form .formData #email {
+  height: 68px;
 }
-form input {
-  width: 100%;
-  border: none;
+.contact__body .form .formData--input {
+  border: 3px solid rgba(0, 0, 0, 0);
   border-radius: 5px;
-  font-size: 16px;
-  height: 60px;
-}
-form textarea {
+  outline: none;
+  padding: 8px 20px;
   width: 100%;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  height: 150px;
-  resize: none;
+  font-family: inherit;
+  font-size: 24px;
+  line-height: 31px;
 }
-form input:focus, form textarea:focus, form button:focus {
-  outline: 2px solid #901C1C;
-}
-form .formData[data-error]::after {
+.contact__body .form .formData[data-error]::after {
+  color: #e54858;
+  font-size: get-vw(950px, 24px);
   content: attr(data-error);
-  font-size: 15px;
-  font-weight: 700;
-  color: #c90519;
-  display: block;
-  margin-top: 10px;
-  margin-bottom: 0px;
   text-align: left;
-  line-height: 0.3;
+  line-height: get-vw(950px, 46.87px);
+  transition: 0.3s;
 }
-form .formData[data-error-visible=true] input, form .formData[data-error-visible=true] textarea {
-  border: 2px solid #e54858;
-  background: rgb(255, 220, 220);
+.contact__body--button {
+  padding: 23px 50px;
+  font-size: 18px;
+  line-height: 23px;
 }
 
-@media only screen and (max-width: 950px) {
-  .modal {
-    width: 80%;
-  }
-  #modalTitle {
-    font-size: 30px;
-  }
-  .formData label {
-    font-size: 20px;
-  }
+.photographers-link {
+  color: #901C1C;
+  margin-right: 100px;
 }
-#photographer_section {
+
+.photographers-index {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 70px;
   margin-top: 100px;
 }
-
-#photographer_section article, #photographer_section a {
+.photographers-index .photographer__link {
   display: flex;
   justify-content: center;
   align-items: center;
   justify-self: center;
   flex-direction: column;
 }
-#photographer_section article h2, #photographer_section a h2 {
+
+.photographer__link--name {
   margin: 15px auto 5px;
   color: #D3573C;
   font-weight: 400;
   font-size: 36px;
 }
-#photographer_section article img, #photographer_section a img {
+.photographer__link--photo {
   height: 200px;
   width: 200px;
   border-radius: 50%;
@@ -295,74 +283,80 @@ form .formData[data-error-visible=true] input, form .formData[data-error-visible
   box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
   transition: 0.2s;
 }
-#photographer_section article .city, #photographer_section a .city {
+.photographer__description {
+  text-align: center;
+}
+.photographer__description--city {
   color: #901C1C;
   font-size: 18px;
 }
-#photographer_section article .price, #photographer_section a .price {
+.photographer__description--price {
   color: #525252;
 }
-
-article a:focus-visible {
+.photographer__link:focus-visible {
   outline: none;
 }
-article a:focus-visible > img {
+.photographer__link:focus-visible--photo {
   transform: scale(1.2);
   opacity: 0.85;
   transition: 0.2s;
 }
 
 @media screen and (max-width: 1400px) {
-  #photographer_section {
+  .photographers-index {
     grid-template-columns: 1fr 1fr;
   }
 }
 @media screen and (max-width: 950px) {
-  .header__index {
+  #header__index {
     flex-direction: column;
     margin-top: 20px;
   }
-  .header__index h1 {
+  #header__index h1 {
     margin-right: 0;
   }
-  #photographer_section {
+  .photographers-index {
     grid-template-columns: 1fr;
   }
-  #main {
-    margin-bottom: 80px;
-  }
 }
-.photograph-header {
+.photographer-header {
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
   padding: 40px;
-  flex-wrap: wrap;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.photograph-header h1 {
+.photographer-header h1 {
   font-size: 60px;
   font-weight: 400;
   color: #D3573C;
-  width: 400px;
   margin: 0 0 20px 0;
   line-height: 0.8;
 }
-.photograph-header .city {
+.photographer-header .city {
   font-size: 22px;
   color: #901C1C;
   margin-bottom: 20px;
 }
-.photograph-header img {
+.photographer-header .description {
+  width: 40%;
+  text-align: center;
+}
+.photographer-header img {
   height: 200px;
   width: 200px;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
   box-shadow: 1px 1px 15px rgba(150, 150, 150, 0.5);
-  margin-left: 200px;
+}
+.photographer-header .photographers {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .sort_section {
@@ -444,20 +438,19 @@ article a:focus-visible > img {
   transition: 0.2s linear;
 }
 
-#medias_section {
+.medias-section {
   display: grid;
-  grid-template-columns: repeat(3, 400px);
-  grid-gap: 20px;
-  padding-top: 80px;
-  max-width: 1200px;
-  margin-left: 80px;
+  grid-template-columns: repeat(3, 24.3055555556vw);
+  row-gap: 2.0833333333vw;
+  justify-content: space-between;
+  margin: 1.5972222222vw 6.9444444444vw 5.2083333333vw;
 }
-#medias_section figure {
-  position: relative;
-  width: 360px;
-  margin: 20px;
+.medias-section .media {
+  border-radius: 5px;
+  width: 24.3055555556vw;
+  height: 20.8333333333vw;
 }
-#medias_section figure video + figcaption:after {
+.medias-section figure video + figcaption:after, .medias-section video video + figcaption:after {
   pointer-events: none;
   content: " ";
   padding: 70px 70px;
@@ -469,8 +462,8 @@ article a:focus-visible > img {
   top: 65px;
   right: 90px;
 }
-#medias_section figure img, #medias_section figure video {
-  height: 300px;
+.medias-section figure img, .medias-section figure video {
+  height: 100%;
   width: 100%;
   border-radius: 5px;
   -o-object-fit: cover;
@@ -478,13 +471,13 @@ article a:focus-visible > img {
   cursor: pointer;
   transition: 0.2s;
 }
-#medias_section figure img:focus-visible, #medias_section figure video:focus-visible {
+.medias-section figure img:focus-visible, .medias-section figure video:focus-visible {
   transform: scale(1.03);
   opacity: 0.85;
   outline: 3px solid #901C1C;
   transition: 0.2s;
 }
-#medias_section figcaption {
+.medias-section figcaption {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -492,13 +485,13 @@ article a:focus-visible > img {
   color: #901C1C;
   width: 100%;
 }
-#medias_section figcaption p {
+.medias-section figcaption p {
   margin-top: 8px;
 }
-#medias_section figcaption .likes {
+.medias-section figcaption .likes {
   white-space: nowrap;
 }
-#medias_section figcaption button {
+.medias-section figcaption button {
   margin-left: 8px;
   cursor: pointer;
   background: none;
@@ -507,13 +500,13 @@ article a:focus-visible > img {
   font-size: inherit;
   transition: 0.2s;
 }
-#medias_section figcaption button:focus-visible {
+.medias-section figcaption button:focus-visible {
   outline: none;
   color: #D3573C;
   transform: scale(1.5);
   transition: 0.2s;
 }
-#medias_section .likes-price {
+.medias-section .likes-price {
   background: #D3573C;
   padding: 20px 40px;
   position: fixed;
@@ -523,23 +516,22 @@ article a:focus-visible > img {
   font-weight: 700;
   font-size: 20px;
 }
-#medias_section .likes-price i {
+.medias-section .likes-price i {
   margin-left: 10px;
   margin-right: 40px;
 }
 
 @media screen and (max-width: 1400px) {
-  #medias_section {
+  .medias-section {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-right: 80px;
   }
   .photograph-header {
     height: auto;
     margin: auto;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
   }
   .photograph-header img {
@@ -563,10 +555,10 @@ article a:focus-visible > img {
   .sort_section {
     margin: 20px;
   }
-  #medias_section {
+  .medias-section {
     margin: auto;
   }
-  #medias_section .likes-price {
+  .medias-section .likes-price {
     width: 90%;
     left: 0px;
     border-radius: 0;

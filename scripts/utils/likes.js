@@ -6,7 +6,7 @@ export class LikesUtils {
   }
 
   insertHTML(likes) {
-    return `${likes} <i class="fa fa-heart"></i> ${this._price}€ / jour`;
+    return `<span>${likes} <i class="fa fa-heart"></i></span> <span>${this._price}€ / jour</span>`;
   }
 
   _likeHandler(e) {

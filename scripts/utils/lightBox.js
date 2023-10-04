@@ -6,7 +6,7 @@ export class LightBoxUtils {
     // Document selector
     this.lightBox = document.querySelector('.lightbox')
     this.lightBoxWrapper = document.querySelector('.lightbox_wrapper');
-    this.lightBoxMedia = document.querySelector('.lightbox_media');
+    this.lightBoxMedia = document.querySelector('.lightbox__media');
     this.btnClose = document.querySelector('.btn_close_lightbox');
     this.btnPrevious = document.querySelector('.btn_previous');
     this.btnNext = document.querySelector('.btn_next');
@@ -22,12 +22,12 @@ export class LightBoxUtils {
     console.log(this.medias)
     console.log(this.currentIndex)
     if (currentMedia.hasOwnProperty('image')) {
-      this.lightBoxMedia.innerHTML += `
-        <img src="./assets/medias/${currentMedia.image}" alt="${currentMedia.title}" style="height: 50vh">
+      this.lightBoxMedia.innerHTML = `
+        <img class="lightbox__media--source" src="./assets/medias/${currentMedia.image}" alt="${currentMedia.title}">
       `;
     } else {
-      this.lightBoxMedia.innerHTML += `
-        <video controls aria-label="${currentMedia.title}"><source src="./assets/medias/${currentMedia.video}" type="video/mp4" style="height: 50vh"></video>
+      this.lightBoxMedia.innerHTML = `
+        <video class="lightbox__media--source" controls aria-label="${currentMedia.title}"><source src="./assets/medias/${currentMedia.video}" type="video/mp4"></video>
       `;
     }
     this.lightBoxMedia.innerHTML += `

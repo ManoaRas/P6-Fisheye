@@ -84,7 +84,7 @@ export class PhotographerModel {
     const userName = this._setUserName(this.name);
     const userCity = this._setUserCity(this.city, this.country);
     const userTagline = this._setUserTagline(this.tagline);
-    description.classList.add("description");
+    description.classList.add("photographer");
     description.append(userName, userCity, userTagline);
     return description;
   }

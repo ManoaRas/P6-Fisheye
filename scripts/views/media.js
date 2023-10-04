@@ -18,14 +18,14 @@ export class MediaView {
   }
 
   _setIcon() {
-    const dataIcon = document.createElement("span");
+    const dataIcon = document.createElement("button");
     dataIcon.classList.add("like-icon");
     dataIcon.setAttribute("aria-label", "like");
     dataIcon.setAttribute("role", "button");
     dataIcon.setAttribute("tabindex", "0");
 
-    const icon = document.createElement("i");
-    icon.classList.add("far");
+    const icon = document.createElement("span");
+    icon.classList.add("fas");
     icon.classList.add("fa-heart");
 
     dataIcon.append(icon);
@@ -44,14 +44,19 @@ export class MediaView {
   }
 
   _createCaption(title, likes) {
-    const caption = document.createElement("p");
+    const caption = document.createElement("figcaption");
     caption.classList.add("caption");
 
     const captionTitle = this._setTitle(title);
     const captionLikes = this._setLikes(likes);
     const captionIcon = this._setIcon();
 
-    caption.append(captionTitle, captionLikes, captionIcon);
+    const likesAndIcons = document.createElement("div");
+    likesAndIcons.setAttribute("role", "group")
+    likesAndIcons.setAttribute("aria-label", "Like button and number of likes")
+    likesAndIcons.append(captionLikes, captionIcon);
+
+    caption.append(captionTitle, likesAndIcons);
     return caption;
   }
 

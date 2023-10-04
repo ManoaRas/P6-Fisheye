@@ -1,63 +1,3 @@
-// form {
-//   display: flex;
-//   width: 100%;
-//   flex-direction: column;
-//   align-items: flex-start;
-
-//   label {
-//     color: $label-dark;
-//     font-size: 28px;
-//   }
-//   div {
-//     display: flex;
-//     flex-direction: column;
-//     width: 100%;
-//     align-items: self-start;
-//     margin-bottom: 26px;
-//   }
-//   input {
-//     @include form-input;
-//     height: 60px;
-//   }
-//   textarea {
-//     @include form-input;
-//     height: 150px;
-//     resize:none;
-//   }
-//   input:focus, textarea:focus, button:focus {
-//     outline: 2px solid $primary-dark;
-//   }
-//   .formData[data-error]::after {
-//     content: attr(data-error);
-//     font-size: 15px;
-//     font-weight: 700;
-//     color: $inputData;
-//     display: block;
-//     margin-top: 10px;
-//     margin-bottom: 0px;
-//     text-align: left;
-//     line-height: 0.3;
-//   }
-//   .formData[data-error-visible="true"] {
-//     input, textarea{
-//       border: 2px solid $b-inputData;
-//       background: $bg-inputData;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: $small){
-//   .modal {
-//     width: 80%;
-//   }
-//   #modalTitle {
-//     font-size: 30px;
-//   }
-//   .formData label {
-//     font-size: 20px;
-//   }
-// }
-
 .contact {
   display: none;
   overflow: auto;
@@ -81,8 +21,7 @@
     margin: auto;
     padding: 35px;
     border-radius: 5px;
-    width: 75%;
-    // max-width: 669px;
+    width: 50%;
     background-color: $bg-modal-color;
     mix-blend-mode: normal;
     filter: drop-shadow(-5px 10px 30px rgba(0, 0, 0, 0.25));
@@ -97,9 +36,10 @@
     height: 100%;
 
     &--title {
-      font-size: 64px;
+      font-size: 40px;
       font-weight: normal;
-      line-height: 83px;
+      line-height: 50px;
+      margin: 0;
     }
 
     &--close {
@@ -128,19 +68,29 @@
 
   &__body {
     width: 100%;
-    .form {
+    #form {
       .formData {
         display: flex;
         flex-direction: column;
 
         label {
           color: $label-dark;
-          font-size: 36px;
+          font-size: 20px;
           line-height: 47px;
         }
 
         #firstname, #lastname, #email {
-          height: 68px;
+          height: 50px;
+          padding-left: 10px;
+          border: none;
+          width: 96%;
+        }
+        #message {
+          border-radius: 5px;
+          height: 150px;
+          resize: none;
+          padding: 10px;
+          width: 96%;
         }
 
         &--input {
@@ -164,9 +114,15 @@
       }
     }
     &--button {
-      padding: 23px 50px;
-      font-size: 18px;
-      line-height: 23px;
+      padding: 15px;
+      font-size: 22px;
+      max-width: 150px;
+      font-weight: bold;
+      background: $primary-dark;
+      border-radius: 5px;
+      height: 60px;
+      color: white;
+      border: none;
     }
   }
 }

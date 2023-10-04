@@ -8,11 +8,10 @@ export class ContactFormUtil {
     this.bodyPage = document.querySelector("body");
     this.photographerModal = document.querySelector(".contact");
     this.contactFormButtonElement = document.querySelector('.contact-me .button');
-
   }
 
   #openModal(open, body) {
-    open.style.display = "block";
+    open.style.display = "flex";
     open.classList.add('active');
     body.style.overflow = "hidden";
   }
