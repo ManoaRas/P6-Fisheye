@@ -19,8 +19,6 @@ export class LightBoxUtils {
 
   _lightBoxTemplate() {
     const currentMedia = this.medias[this.currentIndex];
-    console.log(this.medias)
-    console.log(this.currentIndex)
     if (Object.prototype.hasOwnProperty.call(currentMedia, 'image')) {
       this.lightBoxMedia.innerHTML = `
         <img class="lightbox__media--source" src="./assets/medias/${currentMedia.image}" alt="${currentMedia.title}">
