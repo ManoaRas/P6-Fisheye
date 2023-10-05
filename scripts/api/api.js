@@ -1,6 +1,6 @@
 export class Api {
   constructor() {
-    this.baseUrl = '../data/photographers.json'; // API baseURL
+    this.baseUrl = 'https://raw.githubusercontent.com/ManoaRas/P6-Fisheye/main/data/photographers.json'; // API baseURL
   }
 
   async get() {
