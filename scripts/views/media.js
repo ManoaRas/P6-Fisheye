@@ -25,8 +25,9 @@ export class MediaView {
     dataIcon.setAttribute("tabindex", "0");
 
     const icon = document.createElement("span");
-    icon.classList.add("fas");
+    icon.classList.add("far");
     icon.classList.add("fa-heart");
+    icon.classList.add("icon");
 
     dataIcon.append(icon);
     return dataIcon;

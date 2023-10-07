@@ -94,14 +94,14 @@ export class SortByViews {
     const button = this._getButton();
     const list = this._getList();
 
-    const dropdown = document.createElement("div");
-    dropdown.classList.add("dropdown");
-    dropdown.append(button, list);
-
     const sortby = document.createElement("div");
     sortby.classList.add("sortby");
-    sortby.appendChild(dropdown);
-    return sortby;
+    sortby.append(button, list);
+
+    const dropdown = document.createElement("div");
+    dropdown.classList.add("dropdown");
+    dropdown.appendChild(sortby);
+    return dropdown;
   }
 
   sortByDOM() {

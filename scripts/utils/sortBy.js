@@ -65,29 +65,6 @@ export class SortByUtil {
     lightBoxUtils.init();
   }
 
-  // Function to remove the currently selected item from the list
-  removeSelectedItem() {
-    const sortByValueElement = document.querySelector('.sortby__btn--value');
-    const sortByItemsElements = document.querySelectorAll('.sortby__list--item');
-    const selectedIndex = Array.from(sortByItemsElements).findIndex((element) =>
-      element.textContent === sortByValueElement.textContent
-    );
-    if (selectedIndex !== -1) {
-      sortByItemsElements[selectedIndex].style.display = 'none';
-    }
-  }
-
-  // Function to show a hidden item
-  showHiddenItem(itemText) {
-    const sortByItemsElements = document.querySelectorAll('.sortby__list--item');
-    const itemToDisplay = Array.from(sortByItemsElements).find(
-      (element) => element.textContent === itemText
-    );
-    if (itemToDisplay) {
-      itemToDisplay.style.display = 'block';
-    }
-  }
-
   sortByData() {
     this._sortByViews.sortByDOM();
     const list = document.querySelector(".sortby__list");
@@ -117,6 +94,26 @@ export class SortByUtil {
       }
     };
 
+    // Function to remove the currently selected item from the list
+    const removeSelectedItem = () => {
+      const selectedIndex = Array.from(sortByItemsElements).findIndex((element) =>
+        element.textContent === sortByValueElement.textContent
+      );
+      if (selectedIndex !== -1) {
+        sortByItemsElements[selectedIndex].style.display = 'none';
+      }
+    }
+
+    // Function to show a hidden item
+    const showHiddenItem = (itemText) => {
+      const itemToDisplay = Array.from(sortByItemsElements).find(
+        (element) => element.textContent === itemText
+      );
+      if (itemToDisplay) {
+        itemToDisplay.style.display = 'block';
+      }
+    }
+
     sortByButtonElement.addEventListener('click', toggleDropdown);
 
     // Event manager for keyboard navigation
@@ -143,7 +140,7 @@ export class SortByUtil {
       }
     });
 
-    this.removeSelectedItem(); // Call this function to remove the initial selection
+    removeSelectedItem(); // Call this function to remove the initial selection
 
     // Event handler for list items
     sortByItemsElements.forEach((element, index) => {
@@ -155,7 +152,7 @@ export class SortByUtil {
 
         // Show the previously hidden item
         if (selectedValue !== element.textContent) {
-          this.showHiddenItem(selectedValue);
+          showHiddenItem(selectedValue);
         }
 
         element.style.display = 'none'; // Hide the selected item
