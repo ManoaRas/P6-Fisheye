@@ -11,8 +11,8 @@ export class LikesUtils {
 
   _likeHandler(e) {
     const currentLike = e.target.closest("[data-user-like]");
-    const captionLikeText = currentLike.querySelector(".caption .like-text");
-    const captionLikeIcon = currentLike.querySelector(".caption .like-icon");
+    const captionLikeText = currentLike.querySelector(".caption div .like-text");
+    const captionLikeIcon = currentLike.querySelector(".caption div .like-icon");
     let likesText = parseInt(captionLikeText.innerText);
 
     if (currentLike.dataset.userLike === "false") {

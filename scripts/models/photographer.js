@@ -17,11 +17,11 @@ export class PhotographerModel {
    * @ProtectionMethods
    * @SetUserElements
    */
-  _setUserImage(picture, name) {
+  _setUserImage(picture) {
     const userImage = document.createElement("img");
     userImage.classList.add('photographer__link--photo');
     userImage.setAttribute("src", picture);
-    userImage.setAttribute("alt", name);
+    userImage.setAttribute("alt", "");
     return userImage;
   }
 
@@ -60,7 +60,7 @@ export class PhotographerModel {
    */
   _createPhotographersLink(hrefPhotographer, name) {
     const userLink = document.createElement('a');
-    const userImage = this._setUserImage(this.picture, this.name);
+    const userImage = this._setUserImage(this.picture);
     const userName = this._setUserName(this.name);
     userLink.classList.add("photographer__link");
     userLink.setAttribute("href", hrefPhotographer);

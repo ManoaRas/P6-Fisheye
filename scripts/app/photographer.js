@@ -29,8 +29,8 @@ class PhotographerApp {
     });
   }
 
-  _photographerSortBy(mediaList) {
-    const sortby = new SortByUtil(mediaList);
+  _photographerSortBy(photographer, mediaList) {
+    const sortby = new SortByUtil(photographer, mediaList);
     sortby.sortByData();
   }
 
@@ -49,11 +49,14 @@ class PhotographerApp {
     lightBoxUtils.init();
   }
 
-
-  displayData(photographer, mediaList) {
+  photographerInfos(photographer, mediaList) {
     this._photographerHeaders(photographer);
     this._photographerMedias(mediaList);
-    this._photographerSortBy(mediaList);
+  }
+
+  displayData(photographer, mediaList) {
+    this.photographerInfos(photographer, mediaList);
+    this._photographerSortBy(photographer, mediaList);
     this._contactFormData();
     this._likesData(photographer);
     this._lightboxData(mediaList);

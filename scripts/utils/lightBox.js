@@ -58,7 +58,7 @@ export class LightBoxUtils {
   }
 
   #shortCut() {
-    this.lightBox.addEventListener('keyup', (e) => {
+    document.addEventListener('keydown', (e) => {
       switch(e.key) {
         case 'Escape':
           this._closeLightbox();

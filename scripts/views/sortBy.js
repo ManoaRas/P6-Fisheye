@@ -1,6 +1,7 @@
 export class SortByViews {
   #setBtnValue() {
     const span = document.createElement("span");
+    span.setAttribute("id", "sortByValue")
     span.classList.add("sortby__btn--value");
     span.textContent = "Popularité";
     return (span)
@@ -12,6 +13,7 @@ export class SortByViews {
 
     const img = document.createElement("img");
     img.setAttribute("src", "assets/icons/sortby.svg");
+    img.setAttribute("alt", "");
 
     i.append(img);
     return i;
@@ -20,22 +22,42 @@ export class SortByViews {
   _setList1() {
     const li1 = document.createElement("li");
     li1.classList.add("sortby__list--item");
-    li1.textContent = "Popularité";
+
+    const button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.setAttribute('tabindex', '0')
+    button.setAttribute('aria-label', 'Sort by title')
+    button.textContent = "Popularité";
+
+    li1.append(button);
     return li1;
   }
 
   _setList2() {
     const li2 = document.createElement("li");
     li2.classList.add("sortby__list--item");
-    li2.textContent = "Date";
+
+    const button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.setAttribute('tabindex', '0')
+    button.setAttribute('aria-label', 'Sort by title')
+    button.textContent = "Date";
+
+    li2.append(button);
     return li2;
   }
 
   _setList3() {
     const li3 = document.createElement("li");
     li3.classList.add("sortby__list--item");
-    li3.textContent = "Titre";
 
+    const button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.setAttribute('tabindex', '0')
+    button.setAttribute('aria-label', 'Sort by title')
+    button.textContent = "Titre";
+
+    li3.append(button);
     return li3;
   }
 
@@ -46,7 +68,7 @@ export class SortByViews {
     const button = document.createElement("button");
     button.classList.add("sortby__btn");
     button.setAttribute("type", "button");
-    button.setAttribute('aria-labelledby', 'sortBy')
+    button.setAttribute('aria-labelledby', 'sortByValue')
     button.setAttribute('aria-expanded', 'false')
     button.setAttribute('aria-haspopup', 'listbox')
 
@@ -61,7 +83,7 @@ export class SortByViews {
 
     const ul = document.createElement("ul");
     ul.classList.add("sortby__list");
-    ul.setAttribute('aria-labelledby', 'sortBy')
+    ul.setAttribute('aria-labelledby', 'sortByValue')
     ul.setAttribute('aria-activedescendant', 'popularity')
     ul.setAttribute('aria-selected', 'true')
     ul.setAttribute('role', 'listbox')
@@ -71,7 +93,8 @@ export class SortByViews {
   }
 
   _getLabel() {
-    const label = document.createElement("label");
+    const label = document.createElement("h2");
+    label.classList.add("sort__label")
     label.textContent = "Trier par";
     return label;
   }
