@@ -79,6 +79,7 @@ export class SortByUtil {
     const updateSelection = () => {
       sortByItemsElements.forEach((element, index) => {
         element.classList.toggle('selected', index === selectedIndex);
+        element.style.display = 'block'
       });
     };
 
@@ -94,27 +95,21 @@ export class SortByUtil {
       }
     };
 
-    // Function to remove the currently selected item from the list
-    const removeSelectedItem = () => {
-      const selectedIndex = Array.from(sortByItemsElements).findIndex((element) =>
-        element.textContent === sortByValueElement.textContent
-      );
-      if (selectedIndex !== -1) {
-        sortByItemsElements[selectedIndex].style.display = 'none';
-      }
-    }
-
-    // Function to show a hidden item
-    const showHiddenItem = (itemText) => {
-      const itemToDisplay = Array.from(sortByItemsElements).find(
-        (element) => element.textContent === itemText
-      );
-      if (itemToDisplay) {
-        itemToDisplay.style.display = 'block';
-      }
-    }
-
     sortByButtonElement.addEventListener('click', toggleDropdown);
+
+    // Event handler for list items
+    sortByItemsElements.forEach((element, index) => {
+      element.addEventListener('click', () => {
+        this._handleSortby(element.textContent);
+        sortByValueElement.textContent = element.textContent;
+        toggleDropdown();
+        element.style.display = 'none'; // Hide the selected item
+      });
+      element.addEventListener('mouseenter', () => {
+        selectedIndex = index;
+        updateSelection();
+      });
+    });
 
     // Event manager for keyboard navigation
     document.addEventListener('keydown', (e) => {
@@ -132,36 +127,11 @@ export class SortByUtil {
           const selectedElement = sortByItemsElements[selectedIndex];
           this._handleSortby(selectedElement.textContent);
           sortByValueElement.textContent = selectedElement.textContent;
-          toggleDropdown();
         } else if (e.key === 'Escape') {
           // Escape key: close dropdown
           toggleDropdown();
         }
       }
-    });
-
-    removeSelectedItem(); // Call this function to remove the initial selection
-
-    // Event handler for list items
-    sortByItemsElements.forEach((element, index) => {
-      element.addEventListener('click', () => {
-        this._handleSortby(element.textContent);
-        const selectedValue = sortByValueElement.textContent;
-        sortByValueElement.textContent = element.textContent;
-        toggleDropdown();
-
-        // Show the previously hidden item
-        if (selectedValue !== element.textContent) {
-          showHiddenItem(selectedValue);
-        }
-
-        element.style.display = 'none'; // Hide the selected item
-      });
-
-      element.addEventListener('mouseenter', () => {
-        selectedIndex = index;
-        updateSelection();
-      });
     });
   }
 }

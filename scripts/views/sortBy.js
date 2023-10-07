@@ -24,7 +24,7 @@ export class SortByViews {
     button.classList.add("sortby__list--item");
     button.setAttribute("type", "button");
     button.setAttribute('tabindex', '0')
-    button.setAttribute('aria-label', 'Sort by title')
+    button.setAttribute('aria-label', 'Sort by Popularity')
     button.textContent = "Popularité";
 
     return button;
@@ -35,7 +35,7 @@ export class SortByViews {
     button.classList.add("sortby__list--item");
     button.setAttribute("type", "button");
     button.setAttribute('tabindex', '0')
-    button.setAttribute('aria-label', 'Sort by title')
+    button.setAttribute('aria-label', 'Sort by Date')
     button.textContent = "Date";
 
     return button;
@@ -46,7 +46,7 @@ export class SortByViews {
     button.classList.add("sortby__list--item");
     button.setAttribute("type", "button");
     button.setAttribute('tabindex', '0')
-    button.setAttribute('aria-label', 'Sort by title')
+    button.setAttribute('aria-label', 'Sort by Title')
     button.textContent = "Titre";
 
     return button;
