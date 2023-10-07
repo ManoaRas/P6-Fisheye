@@ -60,9 +60,32 @@ export class SortByUtil {
     const likesUtils = new LikesUtils(this._photographer);
     likesUtils.init();
 
-    // Relancer la lightbox après le nouveau tri
+    // Relaunch lightbox after resorting
     const lightBoxUtils = new LightBoxUtils(this._media);
     lightBoxUtils.init();
+  }
+
+  // Function to remove the currently selected item from the list
+  removeSelectedItem() {
+    const sortByValueElement = document.querySelector('.sortby__btn--value');
+    const sortByItemsElements = document.querySelectorAll('.sortby__list--item');
+    const selectedIndex = Array.from(sortByItemsElements).findIndex((element) =>
+      element.textContent === sortByValueElement.textContent
+    );
+    if (selectedIndex !== -1) {
+      sortByItemsElements[selectedIndex].style.display = 'none';
+    }
+  }
+
+  // Function to show a hidden item
+  showHiddenItem(itemText) {
+    const sortByItemsElements = document.querySelectorAll('.sortby__list--item');
+    const itemToDisplay = Array.from(sortByItemsElements).find(
+      (element) => element.textContent === itemText
+    );
+    if (itemToDisplay) {
+      itemToDisplay.style.display = 'block';
+    }
   }
 
   sortByData() {
@@ -72,23 +95,23 @@ export class SortByUtil {
     const sortByValueElement = document.querySelector('.sortby__btn--value');
     const sortByItemsElements = document.querySelectorAll('.sortby__list--item');
 
-    // Variable pour suivre l'index actuel de l'élément sélectionné
+    // Variable to track the current index of the selected item
     let selectedIndex = 0;
 
-    // Fonction pour mettre à jour la sélection
+    // Function to update the selection
     const updateSelection = () => {
       sortByItemsElements.forEach((element, index) => {
         element.classList.toggle('selected', index === selectedIndex);
       });
     };
 
-    // Gestionnaire d'événement pour ouvrir/fermer le dropdown
+    // Event handler to open/close dropdown
     const toggleDropdown = () => {
       sortByButtonElement.classList.toggle('open');
       list.classList.toggle('open');
 
       if (list.classList.contains('open')) {
-        // Réinitialiser la sélection lorsque le dropdown est ouvert
+        // Reset selection when dropdown is open
         selectedIndex = 0;
         updateSelection();
       }
@@ -96,36 +119,46 @@ export class SortByUtil {
 
     sortByButtonElement.addEventListener('click', toggleDropdown);
 
-    // Gestionnaire d'événement pour la navigation au clavier
+    // Event manager for keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (list.classList.contains('open')) {
         if (e.key === 'ArrowDown') {
-          // Flèche vers le bas : déplacer la sélection vers le bas
+          // Down arrow: move selection downwards
           selectedIndex = Math.min(selectedIndex + 1, sortByItemsElements.length - 1);
           updateSelection();
         } else if (e.key === 'ArrowUp') {
-          // Flèche vers le haut : déplacer la sélection vers le haut
+          // Up arrow: move selection upwards
           selectedIndex = Math.max(selectedIndex - 1, 0);
           updateSelection();
         } else if (e.key === 'Enter') {
-          // Touche Entrée : appliquer la sélection
+          // Enter key: apply selection
           const selectedElement = sortByItemsElements[selectedIndex];
           this._handleSortby(selectedElement.textContent);
           sortByValueElement.textContent = selectedElement.textContent;
           toggleDropdown();
         } else if (e.key === 'Escape') {
-          // Touche Échap : fermer le dropdown
+          // Escape key: close dropdown
           toggleDropdown();
         }
       }
     });
 
-    // Gestionnaire d'événement pour les éléments de la liste
+    this.removeSelectedItem(); // Call this function to remove the initial selection
+
+    // Event handler for list items
     sortByItemsElements.forEach((element, index) => {
       element.addEventListener('click', () => {
         this._handleSortby(element.textContent);
+        const selectedValue = sortByValueElement.textContent;
         sortByValueElement.textContent = element.textContent;
         toggleDropdown();
+
+        // Show the previously hidden item
+        if (selectedValue !== element.textContent) {
+          this.showHiddenItem(selectedValue);
+        }
+
+        element.style.display = 'none'; // Hide the selected item
       });
 
       element.addEventListener('mouseenter', () => {
