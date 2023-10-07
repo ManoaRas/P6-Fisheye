@@ -20,45 +20,36 @@ export class SortByViews {
   }
 
   _setList1() {
-    const li1 = document.createElement("li");
-    li1.classList.add("sortby__list--item");
-
     const button = document.createElement("button");
+    button.classList.add("sortby__list--item");
     button.setAttribute("type", "button");
     button.setAttribute('tabindex', '0')
     button.setAttribute('aria-label', 'Sort by title')
     button.textContent = "Popularité";
 
-    li1.append(button);
-    return li1;
+    return button;
   }
 
   _setList2() {
-    const li2 = document.createElement("li");
-    li2.classList.add("sortby__list--item");
-
     const button = document.createElement("button");
+    button.classList.add("sortby__list--item");
     button.setAttribute("type", "button");
     button.setAttribute('tabindex', '0')
     button.setAttribute('aria-label', 'Sort by title')
     button.textContent = "Date";
 
-    li2.append(button);
-    return li2;
+    return button;
   }
 
   _setList3() {
-    const li3 = document.createElement("li");
-    li3.classList.add("sortby__list--item");
-
     const button = document.createElement("button");
+    button.classList.add("sortby__list--item");
     button.setAttribute("type", "button");
     button.setAttribute('tabindex', '0')
     button.setAttribute('aria-label', 'Sort by title')
     button.textContent = "Titre";
 
-    li3.append(button);
-    return li3;
+    return button;
   }
 
   _getButton() {

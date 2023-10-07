@@ -81,6 +81,13 @@
     color: $secondary-light;
     font-size: 18px;
     border: none;
+    transition: background ease .3s;
+    &:hover, &:focus-visible {
+      background: $primary-light;
+      outline: none;
+      transition: background ease .3s;
+      cursor: pointer;
+    }
   }
   &__list {
     display: none;
@@ -91,17 +98,18 @@
     transition: max-height .1s ease-in-out;
     &--item {
       position: relative;
-      width: 150px;
       font-size: 18px;
       list-style-type: none;
       padding: 15px;
       color: $secondary-light;
-      button {
-        border: none;
-        font-size: 18px;
-        background: inherit;
-        color: inherit;
-        padding: 0;
+      border: none;
+      background: inherit;
+      text-align: left;
+      &:hover, &:focus-visible {
+        background: $primary-light;
+        outline: none;
+        transition: background ease .3s;
+        cursor: pointer;
       }
     }
     &--item::before {
@@ -116,7 +124,9 @@
     }
   }
   &__list.open {
-    display: block !important;
+    display: flex;
+    flex-direction: column;
+    color: white;
   }
 }
 

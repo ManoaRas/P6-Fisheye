@@ -45,12 +45,12 @@ a {
   background: #901C1C;
   border-radius: 5px;
   cursor: pointer;
-  transition: background ease 0.2s;
+  transition: background ease 0.3s;
 }
 .button:hover, .button:focus-visible {
   background: #D3573C;
   outline: none;
-  transition: background ease 0.2s;
+  transition: background ease 0.3s;
 }
 
 .lightbox_wrapper {
@@ -499,6 +499,13 @@ a {
   color: #fafafa;
   font-size: 18px;
   border: none;
+  transition: background ease 0.3s;
+}
+.sortby__btn:hover, .sortby__btn:focus-visible {
+  background: #D3573C;
+  outline: none;
+  transition: background ease 0.3s;
+  cursor: pointer;
 }
 .sortby__list {
   display: none;
@@ -510,18 +517,19 @@ a {
 }
 .sortby__list--item {
   position: relative;
-  width: 150px;
   font-size: 18px;
   list-style-type: none;
   padding: 15px;
   color: #fafafa;
-}
-.sortby__list--item button {
   border: none;
-  font-size: 18px;
   background: inherit;
-  color: inherit;
-  padding: 0;
+  text-align: left;
+}
+.sortby__list--item:hover, .sortby__list--item:focus-visible {
+  background: #D3573C;
+  outline: none;
+  transition: background ease 0.3s;
+  cursor: pointer;
 }
 .sortby__list--item::before {
   content: "";
@@ -534,7 +542,9 @@ a {
   background-color: #fafafa;
 }
 .sortby__list.open {
-  display: block !important;
+  display: flex;
+  flex-direction: column;
+  color: white;
 }
 
 .medias-section {

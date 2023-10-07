@@ -10,10 +10,10 @@
   background: $primary-dark;
   border-radius: 5px;
   cursor: pointer;
-  transition: background ease .2s;
+  transition: background ease .3s;
   &:hover, &:focus-visible {
     background: $primary-light;
     outline: none;
-    transition: background ease .2s;
+    transition: background ease .3s;
   }
 }
