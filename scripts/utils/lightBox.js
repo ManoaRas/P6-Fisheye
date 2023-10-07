@@ -25,7 +25,10 @@ export class LightBoxUtils {
       `;
     } else {
       this.lightBoxMedia.innerHTML = `
-        <video class="lightbox__media--source" controls aria-label="${currentMedia.title}"><source src="./assets/medias/${currentMedia.video}" type="video/mp4"></video>
+        <video class="lightbox__media--source" controls aria-label="${currentMedia.title}">
+          <source src="./assets/medias/${currentMedia.video}" type="video/mp4">
+          <track src="captions/vtt/captions_fr.vtt" kind="captions" srclang="fr" label="french_captions" default="true">
+        </video>
       `;
     }
     this.lightBoxMedia.innerHTML += `
