@@ -4,6 +4,7 @@ export class LightBoxUtils {
     this.medias = medias;
 
     // Document selector
+    this.body = document.querySelector("body");
     this.lightBox = document.querySelector('.lightbox')
     this.lightBoxWrapper = document.querySelector('.lightbox_wrapper');
     this.lightBoxMedia = document.querySelector('.lightbox__media');
@@ -39,6 +40,7 @@ export class LightBoxUtils {
   _closeLightbox() {
     this.lightBoxWrapper.style.display = 'none';
     this.lightBoxMedia.innerHTML = '';
+    this.body.style.overflow = "auto";
   }
 
   _nextMedia() {
@@ -85,6 +87,7 @@ export class LightBoxUtils {
         this.lightBoxWrapper.style.display = 'flex';
         this.btnClose.focus();
         this._lightBoxTemplate(this.currentIndex);
+        this.body.style.overflow = "hidden";
       });
     });
     this.btnPrevious.addEventListener('click', () => this._previousMedia());
