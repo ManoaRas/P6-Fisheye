@@ -14,6 +14,14 @@ export class ContactFormUtil {
     open.style.display = "flex";
     open.classList.add('active');
     body.style.overflow = "hidden";
+
+    // Trouvez l'élément à mettre au focus (par exemple, un champ de texte)
+    const inputField = open.querySelector('#firstname');
+
+    // Mettez le focus sur l'élément
+    if (inputField) {
+      inputField.focus();
+    }
   }
 
   #closeModal(close, body) {
