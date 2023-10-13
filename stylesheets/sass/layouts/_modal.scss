@@ -38,7 +38,6 @@
     &--title {
       font-size: 40px;
       font-weight: normal;
-      line-height: 50px;
       margin: 0;
     }
 
@@ -124,5 +123,12 @@
       color: $secondary-light;
       border: none;
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact__header--title {
+    font-size: 24px;
+    font-weight: 700;
   }
 }
