@@ -80,24 +80,19 @@
 
         #firstname, #lastname, #email {
           height: 50px;
-          padding-left: 10px;
           border: none;
-          width: 96%;
         }
         #message {
           border-radius: 5px;
           height: 150px;
           resize: none;
-          padding: 10px;
-          width: 96%;
         }
 
         &--input {
           border: 3px solid rgba(0,0,0,0);
           border-radius: 5px;
           outline: none;
-          padding: 8px 20px;
-          width: 100%;
+          padding: 10px;
           font-family: inherit;
           font-size: 24px;
           line-height: 31px;

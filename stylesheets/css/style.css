@@ -260,23 +260,18 @@ a {
 }
 .contact__body #form .formData #firstname, .contact__body #form .formData #lastname, .contact__body #form .formData #email {
   height: 50px;
-  padding-left: 10px;
   border: none;
-  width: 96%;
 }
 .contact__body #form .formData #message {
   border-radius: 5px;
   height: 150px;
   resize: none;
-  padding: 10px;
-  width: 96%;
 }
 .contact__body #form .formData--input {
   border: 3px solid rgba(0, 0, 0, 0);
   border-radius: 5px;
   outline: none;
-  padding: 8px 20px;
-  width: 100%;
+  padding: 10px;
   font-family: inherit;
   font-size: 24px;
   line-height: 31px;
